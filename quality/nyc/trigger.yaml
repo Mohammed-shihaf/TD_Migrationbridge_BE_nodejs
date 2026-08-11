@@ -1,0 +1,11 @@
+tool: nyc
+language: javascript
+language_version: "22"
+technique: "Statement / Branch Coverage"
+target_files: [../../src/]
+run:
+  command: "npx nyc --reporter=text mocha 'test/**/*.test.js'"
+expects:
+  coverage_report_generated: true
+verified_in_session: true
+verified_result: "88.09% stmts / 25% branch / 72.72% funcs / 89.74% lines across src/ (100% on data/ and routes/); app.js's uncovered lines (15,20,29-30) are the static-file 404 fallback and listen() guard, not exercised by the request tests"

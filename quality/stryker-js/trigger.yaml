@@ -1,0 +1,12 @@
+tool: stryker-js
+language: javascript
+language_version: "22"
+technique: "Mutation Testing"
+classification: "Mutation Score"
+target_files: [../../src/app.js, ../../stryker.conf.json]
+run:
+  command: "npx stryker run"
+expects:
+  mutants_generated_and_tested: true
+verified_in_session: true
+verified_result: "real mutation run across src/: 50.72% mutation score, 30 killed, 5 timeout, 20 survived, 14 no-coverage — data/migration.js 71.43%, routes/migration.js 100% covered, routes/widgets.js and app.js's static-serving/listen paths are the main gaps"

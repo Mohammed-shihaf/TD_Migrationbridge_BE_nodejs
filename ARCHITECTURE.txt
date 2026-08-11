@@ -1,0 +1,31 @@
+PROJECT TYPE: Framework Migration Bridge (standalone backend module)
+
+BUILD COMMANDS
+==============
+npm install
+npm test        # runs mocha test suite (real, verified passing)
+npm start        # starts Express server on $PORT or 3000 (Node.js 22)
+
+ARCHITECTURE
+============
+This is a STANDALONE Node.js backend repo - Express only, no frontend.
+It exists separately from the TD_Migrationbridge_BE_nodejs_FE_reactjs_FE_angularjs
+connected repo, which combines this backend + React + Angular into one
+application. This repo is the backend module in isolation, branched
+per Node.js version - a genuine multi-resource API, not a single
+bare route.
+
+  src/app.js                mounts routers, real route-splitting
+                              (/legacy/* -> legacy-static/, /app/* -> app-static/)
+  src/routes/widgets.js      GET /api/widgets
+  src/routes/migration.js    GET /api/migration/routes, GET /api/migration/status
+  src/data/migration.js      real migration-progress data layer
+  legacy-static/, app-static/  minimal placeholder pages (the real
+                              Angular/React builds live in
+                              TD_Migrationbridge_FE_angularjs /
+                              TD_Migrationbridge_FE_reactjs)
+  test/                      routes.test.js, migration.test.js, widgets.test.js
+  quality/                   13 real JS code-quality tool fixtures
+
+Branches: migrationbridge_nodejs<18|20|22|24> - one per Node.js version,
+each independently `npm install` + `npm test` verified.

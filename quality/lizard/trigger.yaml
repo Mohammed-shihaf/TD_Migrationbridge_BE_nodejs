@@ -1,0 +1,12 @@
+tool: lizard
+language: javascript
+language_version: "22"
+technique: "Structural Analysis"
+classification: "Cyclomatic Complexity"
+target_files: [../../src/]
+run:
+  command: "lizard src/"
+expects:
+  complexity_report_generated: true
+verified_in_session: true
+verified_result: "4 files / 11 functions across src/ (migration + widgets data/routes, app.js); avg CCN 1.0, 63 total NLOC; no thresholds exceeded"
